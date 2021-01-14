@@ -122,7 +122,7 @@ class TicTacToe
 	playerChange: 	
 		for(i = 0; i < r; i++){
 					
-		  for(int j = 1; j <	10; j++ )
+		  for(int j = 1; j <	boardSize; j++ )
         {	if(board[j] == ' ')     
         {
             switch(j)
@@ -239,10 +239,7 @@ class TicTacToe
 				board[4] = computerLetter;	
 				
 			}
-		}				
-			
-		
-		
+		}						
 	}
 	public void toss(){
 	
@@ -262,7 +259,7 @@ class TicTacToe
 	public boolean checkBoardStatus(){
 	
 	boolean status = false;
-		for (int i = 1; i < 10; i++){
+		for (int i = 1; i < boardSize; i++){
 			if(board[i] == ' '){
 			
 			status = true;
