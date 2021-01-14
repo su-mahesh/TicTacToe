@@ -5,10 +5,11 @@ class TicTacToe
 	final int boardSize = 10;
 	char computerLetter = ' ';
 	char playerLetter = ' ';
+	char toss = ' ';
 	char board[] = new char[boardSize];
 	Scanner sc = new Scanner(System.in);
-	
-	TicTacToe(){		
+		
+	TicTacToe(){
 		for(int i = 0; i < boardSize; i++)
 			board[i] = ' ';
 			System.out.println("**Game started**");	
@@ -70,11 +71,25 @@ class TicTacToe
 		else
 		System.out.println("wrong index");
 	}
+	public void computerMove()	{
+		System.out.println("computer move");
+	}
+	public void toss(){
+	
+	System.out.println("Toss: Heads 'H' or Tails 'T' :");
+	toss = sc.next().charAt(0);
+	String tossResult = (int) (Math.random() * 10) % 2	== 0 ? "Heads" : "Tails";
+	System.out.println("Tossed: "+tossResult);
+	
+	if( toss != tossResult.charAt(0))
+		computerMove();		
+	}
 	public static void main(String... args){
 	
-		TicTacToe TicTacToeGame = new TicTacToe();	
-		TicTacToeGame.inputSymbol();
+		TicTacToe TicTacToeGame = new TicTacToe();		
+		TicTacToeGame.inputSymbol();		
 		TicTacToeGame.showBoard();
+		TicTacToeGame.toss();
 		TicTacToeGame.drawMove();
 
 	}
