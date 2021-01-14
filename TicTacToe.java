@@ -92,6 +92,7 @@ class TicTacToe
 	public void checkWinnigPlaces(){
 	
 	}
+	
 	public void computersMove(){
 
 		ArrayList<Integer> emptyCells = new ArrayList<Integer>();
@@ -114,26 +115,23 @@ class TicTacToe
 			board[index] = computerLetter;
 			}		
 		else{
-		//System.out.println("possible winning check"+emptyCells);
 		
 		char checkLetter = computerLetter;
 		int r = 2;
+		int flag = 0;
 	playerChange: 	
 		for(i = 0; i < r; i++){
-		
-		//System.out.println("possible winning check"+emptyCells);
-			
+					
 		  for(int j = 1; j <	10; j++ )
         {	if(board[j] == ' ')     
         {
             switch(j)
             {
-
                 case 1:	if((board[2] == checkLetter && board[3] == checkLetter) ||
                        	  (board[4] == checkLetter && board[7] == checkLetter) ||
                           (board[5] == checkLetter && board[9] == checkLetter)){
-
-                    board[1] = computerLetter;
+							flag = 1;
+							board[1] = computerLetter;
                     
                     break playerChange;
            
@@ -141,7 +139,7 @@ class TicTacToe
                      break;
                 case 2: if((board[1] == checkLetter && board[3] == checkLetter ) ||
                           (board[5] == checkLetter && board[8] == checkLetter)){
-	
+								flag = 1;
    		                 board[2] = computerLetter;
    		                 
    		            break playerChange;     
@@ -152,7 +150,7 @@ class TicTacToe
                 case 3: if((board[1] == checkLetter && board[2] == checkLetter) ||
                           (board[5] == checkLetter && board[7] == checkLetter) ||
                           (board[6] == checkLetter && board[9] == checkLetter)){
-
+							flag = 1;
                     board[3] = computerLetter;
                     
                     break playerChange;
@@ -161,7 +159,7 @@ class TicTacToe
 
                 case 4: if((board[1] == checkLetter && board[7] == checkLetter) ||
                           (board[5] == checkLetter && board[6] == checkLetter)){
-
+								flag = 1;
                     board[4] = computerLetter;
                     break playerChange;
                     }
@@ -170,7 +168,7 @@ class TicTacToe
                            (board[2] == checkLetter && board[8] == checkLetter) ||
                            (board[1] == checkLetter && board[9] == checkLetter) ||
                            (board[7] == checkLetter && board[3] == checkLetter)){
-
+							flag = 1;
                     board[5] = computerLetter;
                     
                      break playerChange;
@@ -178,7 +176,7 @@ class TicTacToe
                     	 break;
                 case 6: if((board[3] == checkLetter && board[9] == checkLetter) ||
                            (board[4] == checkLetter && board[5] == checkLetter)){
-
+							flag = 1;
                     board[6] = computerLetter;
                      
                     break playerChange;
@@ -188,7 +186,7 @@ class TicTacToe
                 case 7: if((board[1] == checkLetter && board[4] == checkLetter) ||
                            (board[8] == checkLetter && board[9] == checkLetter) ||
                            (board[5] == checkLetter && board[3] == checkLetter)){
-
+							flag = 1;
                     board[7] = computerLetter;
                      
                     break playerChange;
@@ -197,7 +195,7 @@ class TicTacToe
 						 break;
                 case 8: if((board[7] == checkLetter && board[9] == checkLetter) ||
                            (board[2] == checkLetter && board[5] == checkLetter)){
-
+								flag = 1;
                     board[8] = computerLetter;
                      
                     break playerChange;
@@ -208,7 +206,7 @@ class TicTacToe
                 case 9: if((board[1] == checkLetter && board[5] == checkLetter) ||
                            (board[3] == checkLetter && board[6] == checkLetter) ||
                            (board[7] == checkLetter && board[8] == checkLetter)){
-
+								flag = 1;
                     board[9] = computerLetter;
                      
                     break playerChange;
@@ -219,7 +217,17 @@ class TicTacToe
            
            checkLetter = playerLetter;
         }
-//				System.out.println("possible winning check"+emptyCells);
+			if(flag == 0)
+			{
+			if(board[1] == ' ')
+				board[1] = computerLetter;
+			else if(board[3] == ' ')
+				board[3] = computerLetter;
+			else if(board[7] == ' ')
+				board[7] = computerLetter;
+			else if(board[9] == ' ')
+				board[9] = computerLetter;
+			}
 		}				
 			
 		
