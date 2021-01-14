@@ -46,6 +46,7 @@ class TicTacToe
 	public void showBoard(){
 	int charIndex = 1;
 	
+	System.out.println("");
 	for(int i = 1; i <= 3; i++){
 	
 		for(int j = 1; j <= 3; j++){
@@ -65,22 +66,32 @@ class TicTacToe
 	
 	public void drawMove(){
 	currentPlayer = playerLetter;
-	
+	int index = 0;
+	int empty = 1;
+		
+		while((index < 1 || index > 9) || empty != 0){
 		System.out.println("your turn draw move, enter index: ");
-		int index = sc.nextInt();	
+		
+		index = sc.nextInt();	
 		if(index > 0 && index < boardSize)
 		{
 			if(board[index] == ' '){
 				board[index] = playerLetter;
 				System.out.println("move drawn");
+				empty = 0;
+				break;
 				}
-			else
+			else{
+				empty = 1;
 				System.out.println("index is not empty");
-		}	
+		}	}
 		else
 		System.out.println("wrong index");
+		}
 	}
+	public void checkWinnigPlaces(){
 	
+	}
 	public void computersMove(){
 
 		ArrayList<Integer> emptyCells = new ArrayList<Integer>();
@@ -103,72 +114,112 @@ class TicTacToe
 			board[index] = computerLetter;
 			}		
 		else{
+		//System.out.println("possible winning check"+emptyCells);
+		
+		char checkLetter = computerLetter;
+		int r = 2;
+	playerChange: 	
+		for(i = 0; i < r; i++){
+		
+		//System.out.println("possible winning check"+emptyCells);
 			
-			for(int cell : emptyCells )
-			{ 
-				switch(cell)
-				{
-				
-				case 1:	if((board[2] == computerLetter && board[3] == computerLetter) || 
-								(board[4] == computerLetter && board[7] == computerLetter) ||
-								(board[5] == computerLetter && board[9] == computerLetter))
-								
-								board[1] = computerLetter;				
-								break;
-				case 2: if((board[1] == computerLetter && board[3] == computerLetter ) || 
-							  (board[5] == computerLetter && board[8] == computerLetter))
-								
-								board[2] = computerLetter;		
-								break;			
-					
-				case 3: if((board[1] == computerLetter && board[2] == computerLetter) || 
-							  (board[5] == computerLetter && board[7] == computerLetter) ||
-							  (board[6] == computerLetter && board[9] == computerLetter))
-								
-								board[3] = computerLetter;	
-								break;
-								
-				case 4: if((board[1] == computerLetter && board[7] == computerLetter) || 
-							  (board[5] == computerLetter && board[6] == computerLetter))
-								
-								board[4] = computerLetter;	
-								break;
-				case 5: if((board[4] == computerLetter && board[6] == computerLetter) || 
-							  (board[2] == computerLetter && board[8] == computerLetter) ||
-							  (board[1] == computerLetter && board[9] == computerLetter) ||
-							  (board[7] == computerLetter && board[3] == computerLetter))
-								
-								board[5] = computerLetter;	
-								break;								
-				case 6: if((board[3] == computerLetter && board[9] == computerLetter) || 
-							  (board[4] == computerLetter && board[5] == computerLetter))
-								
-								board[6] = computerLetter;	
-								break;					
-								
-				case 7: if((board[1] == computerLetter && board[4] == computerLetter) || 
-							  (board[8] == computerLetter && board[9] == computerLetter) ||
-							  (board[5] == computerLetter && board[3] == computerLetter))
-								
-								board[7] = computerLetter;	
-								break;	
-								
-				case 8: if((board[7] == computerLetter && board[9] == computerLetter) || 
-							  (board[2] == computerLetter && board[5] == computerLetter))
-								
-								board[8] = computerLetter;	
-								break;	
-								
-				case 9: if((board[1] == computerLetter && board[5] == computerLetter) || 
-							  (board[3] == computerLetter && board[6] == computerLetter) ||
-							  (board[7] == computerLetter && board[8] == computerLetter))
-								
-								board[9] = computerLetter;	
-								break;								
-				}
-			}
-			
-			
+		  for(int j = 1; j <	10; j++ )
+        {	if(board[j] == ' ')     
+        {
+            switch(j)
+            {
+
+                case 1:	if((board[2] == checkLetter && board[3] == checkLetter) ||
+                       	  (board[4] == checkLetter && board[7] == checkLetter) ||
+                          (board[5] == checkLetter && board[9] == checkLetter)){
+
+                    board[1] = computerLetter;
+                    
+                    break playerChange;
+           
+                    }
+                     break;
+                case 2: if((board[1] == checkLetter && board[3] == checkLetter ) ||
+                          (board[5] == checkLetter && board[8] == checkLetter)){
+	
+   		                 board[2] = computerLetter;
+   		                 
+   		            break playerChange;     
+                     
+                     }
+                      break;
+
+                case 3: if((board[1] == checkLetter && board[2] == checkLetter) ||
+                          (board[5] == checkLetter && board[7] == checkLetter) ||
+                          (board[6] == checkLetter && board[9] == checkLetter)){
+
+                    board[3] = computerLetter;
+                    
+                    break playerChange;
+                    }
+                     break;
+
+                case 4: if((board[1] == checkLetter && board[7] == checkLetter) ||
+                          (board[5] == checkLetter && board[6] == checkLetter)){
+
+                    board[4] = computerLetter;
+                    break playerChange;
+                    }
+                     break;
+                case 5: if((board[4] == checkLetter && board[6] == checkLetter) ||
+                           (board[2] == checkLetter && board[8] == checkLetter) ||
+                           (board[1] == checkLetter && board[9] == checkLetter) ||
+                           (board[7] == checkLetter && board[3] == checkLetter)){
+
+                    board[5] = computerLetter;
+                    
+                     break playerChange;
+                    }
+                    	 break;
+                case 6: if((board[3] == checkLetter && board[9] == checkLetter) ||
+                           (board[4] == checkLetter && board[5] == checkLetter)){
+
+                    board[6] = computerLetter;
+                     
+                    break playerChange;
+                    }
+                     break;
+	
+                case 7: if((board[1] == checkLetter && board[4] == checkLetter) ||
+                           (board[8] == checkLetter && board[9] == checkLetter) ||
+                           (board[5] == checkLetter && board[3] == checkLetter)){
+
+                    board[7] = computerLetter;
+                     
+                    break playerChange;
+                    
+                    }
+						 break;
+                case 8: if((board[7] == checkLetter && board[9] == checkLetter) ||
+                           (board[2] == checkLetter && board[5] == checkLetter)){
+
+                    board[8] = computerLetter;
+                     
+                    break playerChange;
+                    
+                    }
+                    break;
+
+                case 9: if((board[1] == checkLetter && board[5] == checkLetter) ||
+                           (board[3] == checkLetter && board[6] == checkLetter) ||
+                           (board[7] == checkLetter && board[8] == checkLetter)){
+
+                    board[9] = computerLetter;
+                     
+                    break playerChange;
+                    } break;
+            }}
+            
+           }	
+           
+           checkLetter = playerLetter;
+        }
+//				System.out.println("possible winning check"+emptyCells);
 		}				
 			
 		
@@ -190,17 +241,19 @@ class TicTacToe
 	}
 	
 	public boolean checkBoardStatus(){
+	
 	boolean status = false;
-		for (char ch : board){
-			if(ch == ' '){
+		for (int i = 1; i < 10; i++){
+			if(board[i] == ' '){
+			
 			status = true;
-			}			
+			}
 		}	
 		if(status == false){
 		System.out.println("No place left, game tie");
 		return false;
 		}
-
+		else
 		return true;
 	}
 
@@ -219,6 +272,8 @@ class TicTacToe
 				
 				if(currentPlayer == playerLetter){
 					System.out.println("***You Won***");
+					showBoard();
+					
 				}
 				else
 					System.out.println("***Computer Won***");		
