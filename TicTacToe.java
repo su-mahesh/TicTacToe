@@ -4,7 +4,7 @@ class TicTacToe
 {
 	final int boardSize = 10;
 	char computerLetter = ' ';
-	char palyerLetter = ' ';
+	char playerLetter = ' ';
 	char board[] = new char[boardSize];
 	Scanner sc = new Scanner(System.in);
 	
@@ -24,11 +24,11 @@ class TicTacToe
 	{
 	case 'x':
 	case 'X': 
-		palyerLetter = 'X';
+		playerLetter = 'X';
 		computerLetter = 'O';
 	case 'o':
 	case 'O':
-		palyerLetter = 'X';
+		playerLetter = 'X';
 		computerLetter = 'X';
 	}
 	}
@@ -60,8 +60,10 @@ class TicTacToe
 		int index = sc.nextInt();	
 		if(index > 0 && index < boardSize)
 		{
-			if(board[index] == ' ')
-				board[index] = palyerLetter;
+			if(board[index] == ' '){
+				board[index] = playerLetter;
+				System.out.println("move drawn");
+				}
 			else
 				System.out.println("index is not empty");
 		}	
