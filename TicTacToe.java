@@ -32,6 +32,7 @@ class TicTacToe
 	case 'X': 
 		playerLetter = 'X';
 		computerLetter = 'O';
+		break;
 	case 'o':
 	case 'O':
 		playerLetter = 'O';
@@ -44,6 +45,7 @@ class TicTacToe
 	
 	public void showBoard(){
 	int charIndex = 1;
+	
 	for(int i = 1; i <= 3; i++){
 	
 		for(int j = 1; j <= 3; j++){
@@ -64,7 +66,7 @@ class TicTacToe
 	public void drawMove(){
 	currentPlayer = playerLetter;
 	
-		System.out.println("draw move, enter index: ");
+		System.out.println("your turn draw move, enter index: ");
 		int index = sc.nextInt();	
 		if(index > 0 && index < boardSize)
 		{
@@ -79,9 +81,98 @@ class TicTacToe
 		System.out.println("wrong index");
 	}
 	
-	public void computersMove()	{
+	public void computersMove(){
+
+		ArrayList<Integer> emptyCells = new ArrayList<Integer>();
+		
+		int i = 1, k = 0;
 		currentPlayer = computerLetter;
 		System.out.println("computer's move");
+		boolean b = true;
+		for(i = 1; i < boardSize; i++){	
+			if(board[i] != ' '){
+				b = false;										
+		}		
+		else
+		emptyCells.add(i);
+		}
+		if(b){
+			i = (int) (Math.random() * 10) % 4;			
+			int[] corners = {1,3,7,9};
+			int index = corners[i];			
+			board[index] = computerLetter;
+			}		
+		else{
+			
+			for(int cell : emptyCells )
+			{ 
+				switch(cell)
+				{
+				
+				case 1:	if((board[2] == computerLetter && board[3] == computerLetter) || 
+								(board[4] == computerLetter && board[7] == computerLetter) ||
+								(board[5] == computerLetter && board[9] == computerLetter))
+								
+								board[1] = computerLetter;				
+								break;
+				case 2: if((board[1] == computerLetter && board[3] == computerLetter ) || 
+							  (board[5] == computerLetter && board[8] == computerLetter))
+								
+								board[2] = computerLetter;		
+								break;			
+					
+				case 3: if((board[1] == computerLetter && board[2] == computerLetter) || 
+							  (board[5] == computerLetter && board[7] == computerLetter) ||
+							  (board[6] == computerLetter && board[9] == computerLetter))
+								
+								board[3] = computerLetter;	
+								break;
+								
+				case 4: if((board[1] == computerLetter && board[7] == computerLetter) || 
+							  (board[5] == computerLetter && board[6] == computerLetter))
+								
+								board[4] = computerLetter;	
+								break;
+				case 5: if((board[4] == computerLetter && board[6] == computerLetter) || 
+							  (board[2] == computerLetter && board[8] == computerLetter) ||
+							  (board[1] == computerLetter && board[9] == computerLetter) ||
+							  (board[7] == computerLetter && board[3] == computerLetter))
+								
+								board[5] = computerLetter;	
+								break;								
+				case 6: if((board[3] == computerLetter && board[9] == computerLetter) || 
+							  (board[4] == computerLetter && board[5] == computerLetter))
+								
+								board[6] = computerLetter;	
+								break;					
+								
+				case 7: if((board[1] == computerLetter && board[4] == computerLetter) || 
+							  (board[8] == computerLetter && board[9] == computerLetter) ||
+							  (board[5] == computerLetter && board[3] == computerLetter))
+								
+								board[7] = computerLetter;	
+								break;	
+								
+				case 8: if((board[7] == computerLetter && board[9] == computerLetter) || 
+							  (board[2] == computerLetter && board[5] == computerLetter))
+								
+								board[8] = computerLetter;	
+								break;	
+								
+				case 9: if((board[1] == computerLetter && board[5] == computerLetter) || 
+							  (board[3] == computerLetter && board[6] == computerLetter) ||
+							  (board[7] == computerLetter && board[8] == computerLetter))
+								
+								board[9] = computerLetter;	
+								break;								
+				}
+			}
+			
+			
+		}				
+			
+		
+		
 	}
 	public void toss(){
 	
@@ -92,6 +183,7 @@ class TicTacToe
 	
 	if( toss != tossResult.charAt(0)){
 		computersMove();
+		showBoard();
 		currentPlayer = computerLetter;		
 	}
 	else currentPlayer = playerLetter;
@@ -126,10 +218,10 @@ class TicTacToe
 			currentPlayer == board[7] && currentPlayer == board[5] && currentPlayer == board[3] ){
 				
 				if(currentPlayer == playerLetter){
-					System.out.println("You Won");
+					System.out.println("***You Won***");
 				}
 				else
-					System.out.println("Computer Won");		
+					System.out.println("***Computer Won***");		
 				return false;
 				}
 			else
@@ -158,6 +250,6 @@ class TicTacToe
 			c++;
 		}
 		
-		}
+	}
 	
 }
