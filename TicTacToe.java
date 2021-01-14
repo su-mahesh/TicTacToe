@@ -46,6 +46,7 @@ class TicTacToe
 	public void showBoard(){
 	int charIndex = 1;
 	
+	System.out.println("");
 	for(int i = 1; i <= 3; i++){
 	
 		for(int j = 1; j <= 3; j++){
@@ -80,7 +81,9 @@ class TicTacToe
 		else
 		System.out.println("wrong index");
 	}
+	public void checkWinnigPlaces(){
 	
+	}
 	public void computersMove(){
 
 		ArrayList<Integer> emptyCells = new ArrayList<Integer>();
@@ -103,70 +106,79 @@ class TicTacToe
 			board[index] = computerLetter;
 			}		
 		else{
-			
-			for(int cell : emptyCells )
-			{ 
-				switch(cell)
-				{
-				
-				case 1:	if((board[2] == computerLetter && board[3] == computerLetter) || 
-								(board[4] == computerLetter && board[7] == computerLetter) ||
-								(board[5] == computerLetter && board[9] == computerLetter))
-								
-								board[1] = computerLetter;				
-								break;
-				case 2: if((board[1] == computerLetter && board[3] == computerLetter ) || 
-							  (board[5] == computerLetter && board[8] == computerLetter))
-								
-								board[2] = computerLetter;		
-								break;			
-					
-				case 3: if((board[1] == computerLetter && board[2] == computerLetter) || 
-							  (board[5] == computerLetter && board[7] == computerLetter) ||
-							  (board[6] == computerLetter && board[9] == computerLetter))
-								
-								board[3] = computerLetter;	
-								break;
-								
-				case 4: if((board[1] == computerLetter && board[7] == computerLetter) || 
-							  (board[5] == computerLetter && board[6] == computerLetter))
-								
-								board[4] = computerLetter;	
-								break;
-				case 5: if((board[4] == computerLetter && board[6] == computerLetter) || 
-							  (board[2] == computerLetter && board[8] == computerLetter) ||
-							  (board[1] == computerLetter && board[9] == computerLetter) ||
-							  (board[7] == computerLetter && board[3] == computerLetter))
-								
-								board[5] = computerLetter;	
-								break;								
-				case 6: if((board[3] == computerLetter && board[9] == computerLetter) || 
-							  (board[4] == computerLetter && board[5] == computerLetter))
-								
-								board[6] = computerLetter;	
-								break;					
-								
-				case 7: if((board[1] == computerLetter && board[4] == computerLetter) || 
-							  (board[8] == computerLetter && board[9] == computerLetter) ||
-							  (board[5] == computerLetter && board[3] == computerLetter))
-								
-								board[7] = computerLetter;	
-								break;	
-								
-				case 8: if((board[7] == computerLetter && board[9] == computerLetter) || 
-							  (board[2] == computerLetter && board[5] == computerLetter))
-								
-								board[8] = computerLetter;	
-								break;	
-								
-				case 9: if((board[1] == computerLetter && board[5] == computerLetter) || 
-							  (board[3] == computerLetter && board[6] == computerLetter) ||
-							  (board[7] == computerLetter && board[8] == computerLetter))
-								
-								board[9] = computerLetter;	
-								break;								
-				}
-			}
+		char checkLetter = playerLetter;
+		
+		for(i = 0; i < 1; i++){
+		checkPossibleWinning:	
+		  for(int cell : emptyCells )
+        {
+            switch(cell)
+            {
+
+                case 1:	if((board[2] == checkLetter && board[3] == checkLetter) ||
+                        (board[4] == checkLetter && board[7] == checkLetter) ||
+                        (board[5] == checkLetter && board[9] == checkLetter)){
+
+                    board[1] = computerLetter;
+                    break checkPossibleWinning;}
+                case 2: if((board[1] == checkLetter && board[3] == checkLetter ) ||
+                        (board[5] == checkLetter && board[8] == checkLetter)){
+	
+   		                 board[2] = computerLetter;
+   		                 
+                     break checkPossibleWinning;
+                     }
+
+                case 3: if((board[1] == checkLetter && board[2] == checkLetter) ||
+                        (board[5] == checkLetter && board[7] == checkLetter) ||
+                        (board[6] == checkLetter && board[9] == checkLetter)){
+
+                    board[3] = computerLetter;
+                    break checkPossibleWinning;}
+
+                case 4: if((board[1] == checkLetter && board[7] == checkLetter) ||
+                        (board[5] == checkLetter && board[6] == checkLetter)){
+
+                    board[4] = computerLetter;
+                    break checkPossibleWinning;}
+                case 5: if((board[4] == checkLetter && board[6] == checkLetter) ||
+                        (board[2] == checkLetter && board[8] == checkLetter) ||
+                        (board[1] == checkLetter && board[9] == checkLetter) ||
+                        (board[7] == checkLetter && board[3] == checkLetter)){
+
+                    board[5] = computerLetter;
+                    break checkPossibleWinning;}
+                case 6: if((board[3] == checkLetter && board[9] == checkLetter) ||
+                        (board[4] == checkLetter && board[5] == checkLetter)){
+
+                    board[6] = computerLetter;
+                    break checkPossibleWinning;}
+
+                case 7: if((board[1] == checkLetter && board[4] == checkLetter) ||
+                        (board[8] == checkLetter && board[9] == checkLetter) ||
+                        (board[5] == checkLetter && board[3] == checkLetter)){
+
+                    board[7] = computerLetter;
+                    break checkPossibleWinning;
+                    }
+
+                case 8: if((board[7] == checkLetter && board[9] == checkLetter) ||
+                        (board[2] == checkLetter && board[5] == checkLetter)){
+
+                    board[8] = computerLetter;
+                    break checkPossibleWinning;
+                    }
+
+                case 9: if((board[1] == checkLetter && board[5] == checkLetter) ||
+                        (board[3] == checkLetter && board[6] == checkLetter) ||
+                        (board[7] == checkLetter && board[8] == checkLetter)){
+
+                    board[9] = computerLetter;
+                    break checkPossibleWinning;}
+            }
+            
+           }
+        }
 			
 			
 		}				
@@ -219,6 +231,8 @@ class TicTacToe
 				
 				if(currentPlayer == playerLetter){
 					System.out.println("***You Won***");
+					showBoard();
+					
 				}
 				else
 					System.out.println("***Computer Won***");		
