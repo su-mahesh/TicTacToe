@@ -227,6 +227,17 @@ class TicTacToe
 				board[7] = computerLetter;
 			else if(board[9] == ' ')
 				board[9] = computerLetter;
+			else if(board[5] == ' ')	
+				board[5] = computerLetter;
+			else if(board[2] == ' ')	
+				board[2] = computerLetter;	
+			else if(board[6] == ' ')	
+				board[6] = computerLetter;	
+			else if(board[8] == ' ')	
+				board[8] = computerLetter;	
+			else if(board[4] == ' ')	
+				board[4] = computerLetter;	
+				
 			}
 		}				
 			
@@ -285,6 +296,7 @@ class TicTacToe
 				}
 				else
 					System.out.println("***Computer Won***");		
+					showBoard();
 				return false;
 				}
 			else
